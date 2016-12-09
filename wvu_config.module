@@ -1,0 +1,76 @@
+<?php
+
+/**
+ * Implements hook_user_insert().
+ */
+function wvu_config_user_insert(&$edit, $account, $category) {
+  cas_user_operations_create_username(array($account->uid));
+}
+
+/**
+ * Implements hook_menu().
+ */
+function wvu_config_menu() {
+  $items['wvulogout'] = array(
+    'title' => 'Thanks for coming',
+    'page callback' => '_wvu_config_logout',
+    'page arguments' => array(),
+    'access arguments' => array('access content'),
+    'type' => MENU_NORMAL_ITEM,
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_page_build().
+ */
+function wvu_config_page_build(&$page) {
+  dpm($_SESSION['phpCAS']);
+
+}
+
+/**
+ * Logout of CAS and redirect to....
+ */
+function _wvu_config_logout() {
+  // to stuff
+  return '';
+}
+
+/**
+ * Implements hook_page_build().
+ */
+function wvu_config_aanda_page_build(&$page) {
+  $path = drupal_get_path('module', 'wvu_config') .'/';
+  drupal_add_css($path . 'css/wvu_config.css');
+}
+
+/**
+ * Implements hook_cis_service_instance_options_alter().
+ */
+function wvu_config_cis_service_instance_options_alter(&$options, $course, $service) {
+  // ensure this module gets hooked into future builds
+  $options['en'][] = 'wvu_config';
+  $options['en'][] = 'cas';
+  $staff = array('li', 'bob');
+
+  foreach ($staff as $member) {
+    $options['ucrt'][] = $member . ' --mail=' . $member . '@wvu.edu';
+    $options['urol']['staff'][] =  $member;
+  }
+
+  // add admin member roles to site
+  $admins = array('eugene');
+  foreach ($admins as $admin) {
+    $options['urol']['administrator'][] = $admin;
+  }
+}
+
+/**
+ * Implements hook_cis_service_instance_job_file_alter().
+ */
+function wvu_config_cis_service_instance_job_file_alter(&$content, $course, $service, $service_instance) {
+  // may seem odd but double running cron can prime syncing
+  $content .= 'drush dis bakery' . "\n";
+}
