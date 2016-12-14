@@ -3,4 +3,3 @@ description = WVU specific modifications
 package = "WVU"
 core = "7.x"
 project = "wvu_config"
-dependencies[] = cas
