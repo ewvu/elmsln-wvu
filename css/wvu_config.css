@@ -32,9 +32,9 @@
 	.page-mooc-book-toc ul.menu a{
 		border: none !important;
 	}
-	nav ul.left-nav-section a{
-		height: inherit;
-		line-height: inherit;
+	nav ul.left-nav-section a, ul.left-nav-section li{
+		height: auto !important;
+		line-height: 4rem !important;
 	}
 
 @media screen and (min-width: 800px){
