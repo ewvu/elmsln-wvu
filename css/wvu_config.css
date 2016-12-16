@@ -1,5 +1,5 @@
 /* css here */
-
+    /* header image */
 	.header-image-container {
 	    background-color: #002855;
 	    background-image: url(https://patterns.wvu.edu/images/flying-wv-w-signature.png);
@@ -14,10 +14,27 @@
 		display: none;
 	}
 
+	/* course main navigation */
 	#etb-course-nav{
 		background-color: #000000 !important;
 		color: #ffffff !important;
 		border-top-width: 0 !important;
+	}
+	#etb-course-nav .left-nav-section li{
+		border-right: solid 1px #666;
+	}
+	#etb-course-nav .left-nav-section li:hover{
+		background-color: #EAAA00;
+	}
+	#etb-course-nav span.course-title{
+		color: #ffffff !important;
+	}
+	.page-mooc-book-toc ul.menu a{
+		border: none !important;
+	}
+	nav ul.left-nav-section a{
+		height: inherit;
+		line-height: inherit;
 	}
 
 @media screen and (min-width: 800px){

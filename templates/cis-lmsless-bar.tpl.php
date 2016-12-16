@@ -8,7 +8,7 @@
   }
 ?>
 <!-- Ecosystem Top Nav -->
-<div id="etb-course-nav" class="row full collapse z-depth-1">
+<div id="etb-course-nav" class="row full collapse">
   <div class="s12 m7 col">
     <nav class="top-bar etb-nav middle-align-wrap etb-nav--center--parent" data-options="is_hover: false" data-topbar>
      <section>
@@ -25,16 +25,15 @@
           <?php endif; ?>
           <?php if ($bar_elements['user']) : ?>
           <li class="elmsln-user-profile-menu-item ferpa-protect">
-            <a href="#user-menu-button" class="middle-align-wrap elmsln-user-button elmsln-left-side-nav-trigger waves-effect waves-<?php print $lmsless_classes[$distro]['color'];?> waves-light" data-activates="block-cis-lmsless-cis-lmsless-user-nav-modal" data-jwerty-key="u" data-voicecommand="open user">
+            <a href="#user-menu-button" class="middle-align-wrap elmsln-user-button elmsln-left-side-nav-trigger waves-effect  waves-light" data-activates="block-cis-lmsless-cis-lmsless-user-nav-modal" data-jwerty-key="u" data-voicecommand="open user">
               <?php if (isset($userpicture)) { print $userpicture; } ?>
               <span class="hide-on-med-and-down truncate"><?php print $username; ?></span>
             </a>
           </li>
           <?php endif; ?>
-          <li class="divider-right <?php print $lmsless_classes[$distro]['color'];?>-border"></li>
           <?php if ($bar_elements['help']) : ?>
           <li>
-            <a href="<?php print $help_link;?>" class="elmsln-help-button middle-align-wrap waves-effect waves-<?php print $lmsless_classes[$distro]['color'];?> waves-light" data-jwerty-key="h" data-voicecommand="help">
+            <a href="<?php print $help_link;?>" class="elmsln-help-button middle-align-wrap waves-effect waves-light" data-jwerty-key="h" data-voicecommand="help">
               <i class="material-icons left">help</i>
               <span class="hide-on-med-and-down"><?php print t('FAQ'); ?></span>
             </a>
@@ -42,7 +41,7 @@
           <?php endif; ?>
           <?php if (isset($bar_elements['resources']) && $bar_elements['resources']) : ?>
             <li>
-            <a href="<?php print $resources_link;?>" class="elmsln-resource-button middle-align-wrap waves-effect waves-<?php print $lmsless_classes[$distro]['color'];?> waves-light" data-jwerty-key="r" data-voicecommand="resources">
+            <a href="<?php print $resources_link;?>" class="elmsln-resource-button middle-align-wrap waves-effect waves-light" data-jwerty-key="r" data-voicecommand="resources">
               <i class="material-icons left">local_library</i>
               <span class="hide-on-med-and-down"><?php print t('Resources'); ?></span>
             </a>
@@ -50,7 +49,7 @@
           <?php endif; ?>
           <?php if ($bar_elements['syllabus']) : ?>
             <li>
-            <a href="<?php print $syllabus_link;?>" class="elmsln-syllabus-button middle-align-wrap waves-effect waves-<?php print $lmsless_classes[$distro]['color'];?> waves-light" data-jwerty-key="y" data-voicecommand="syllabus">
+            <a href="<?php print $syllabus_link;?>" class="elmsln-syllabus-button middle-align-wrap waves-effect  waves-light" data-jwerty-key="y" data-voicecommand="syllabus">
               <i class="material-icons left">info_outline</i>
               <span class="hide-on-med-and-down"><?php print t('Syllabus'); ?></span>
             </a>
@@ -72,7 +71,7 @@
             <a id="elmsln-tools-trigger" class="course-title elmsln-course-title elmsln-dropdown-button" href="#elmsln-settings-menu" title="" data-activates="elmsln-tools-menu" aria-controls="elmsln-tools-menu" aria-expanded="false" data-jwerty-key="t" data-voicecommand="open settings (menu)">
               <span class="course-title-group">
                 <span class="course-title"><?php print $slogan; ?></span>
-                <span class="course-abrv"><?php print $site_name; ?> <?php if (isset($section_title)) : print $section_title; endif; ?></span>
+                <span class="course-abrv"><?php //print $site_name; ?> <?php //if (isset($section_title)) : print $section_title; endif; ?></span>
               </span>
               <span class="course-title-icon icon--dropdown"></span>
             </a>
@@ -85,7 +84,7 @@
             <a id="elmsln-tools-trigger" class="course-title elmsln-course-title" href="<?php print base_path(); ?>" title="<?php print t('Home'); ?>">
               <span class="course-title-group">
                 <span class="course-title"><?php print $slogan; ?></span>
-                <span class="course-abrv"><?php print $site_name; ?> <?php if (isset($section_title)) : print $section_title; endif; ?></span>
+                <span class="course-abrv"><?php //print $site_name; ?> <?php //if (isset($section_title)) : print $section_title; endif; ?></span>
               </span>
             </a>
             <?php } ?>
