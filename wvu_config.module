@@ -9,18 +9,44 @@ function wvu_config_user_insert(&$edit, $account, $category) {
 
 /**
  * Implements hook_menu().
-
+*/
 function wvu_config_menu() {
-  $items['wvulogout'] = array(
+  /*$items['wvulogout'] = array(
     'title' => 'Thanks for coming',
     'page callback' => '_wvu_config_logout',
     'page arguments' => array(),
     'access arguments' => array('access content'),
     'type' => MENU_NORMAL_ITEM,
-  );
+  );*/
+  $items['wvuonline'] = array(
+      'title' => 'WVU Online',
+      'type' => MENU_NORMAL_ITEM,
+      'access arguments' => array('access content'),
+      'page callback' => 'drupal_goto',
+      'access callback' => TRUE,
+      'page arguments' => array('http://online.wvu.edu'),
+      'menu_name' => 'main-menu',
+      'weight' => 8
+    );
 
   return $items;
-} */
+} 
+
+/**
+ * Implements hook_theme_registry_alter().
+ */
+function wvu_config_theme_registry_alter(&$theme_registry) {
+   // Defined path to the current module.
+  $module_path = drupal_get_path('module', 'wvu_config');
+  // override main navigation template with custom template file within wvu_config module
+  if(isset($theme_registry['cis_lmsless_bar'])){
+      $theme_registry['cis_lmsless_bar']['theme path'] = $module_path . "/templates";
+      $theme_registry['cis_lmsless_bar']['path'] = $module_path . "/templates";
+      $theme_registry['cis_lmsless_bar']['type'] = "module";
+      $theme_registry['cis_lmsless_bar']['template'] = "cis-lmsless-bar";
+  }
+  //dpm($theme_registry['cis_lmsless_bar']);
+}
 
 /**
  * Implements hook_page_build().
@@ -29,6 +55,7 @@ function wvu_config_page_build(&$page) {
   //dpm($_SESSION['phpCAS']);
    $path = drupal_get_path('module', 'wvu_config') .'/';
   drupal_add_css($path . 'css/wvu_config.css'); 
+
 }
 
 /**

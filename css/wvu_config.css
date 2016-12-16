@@ -1,2 +1,31 @@
 /* css here */
-.row{background: #999;}
+
+	.header-image-container {
+	    background-color: #002855;
+	    background-image: url(https://patterns.wvu.edu/images/flying-wv-w-signature.png);
+	    background-repeat: no-repeat;
+	    background-position: 1em;
+	    background-size: 290px;
+	}
+	.header-image-container .logo__img{
+		display: none;
+	}
+	.elmsln-system-badge {
+		display: none;
+	}
+
+	#etb-course-nav{
+		background-color: #000000 !important;
+		color: #ffffff !important;
+		border-top-width: 0 !important;
+	}
+
+@media screen and (min-width: 800px){
+
+}
+
+@media screen and (max-width: 800px){
+	.header-image-container {
+	    background-size: 200px;
+	}
+}
