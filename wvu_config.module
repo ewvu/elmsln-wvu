@@ -54,8 +54,8 @@ function wvu_config_theme_registry_alter(&$theme_registry) {
 function wvu_config_page_build(&$page) {
   //dpm($_SESSION['phpCAS']);
    $path = drupal_get_path('module', 'wvu_config') .'/';
-  drupal_add_css($path . 'css/wvu_config.css'); 
-
+   drupal_add_css('https://fast.fonts.net/cssapi/36d8cd92-7cc7-499b-b169-0eed9d670283.css',array('type'=>'exteral'));
+   drupal_add_css($path . 'css/wvu_config.css'); 
 }
 
 /**
@@ -68,12 +68,13 @@ function _wvu_config_logout() {
 
 /**
  * Implements hook_page_build().
- */
+
 function wvu_config_aanda_page_build(&$page) {
   $path = drupal_get_path('module', 'wvu_config') .'/';
+  drupal_add_css($path . 'css/pattern.css');
   drupal_add_css($path . 'css/wvu_config.css');
 }
-
+ */
 /**
  * Implements hook_cis_service_instance_options_alter().
 
