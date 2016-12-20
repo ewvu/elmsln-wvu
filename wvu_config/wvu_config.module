@@ -45,7 +45,7 @@ function wvu_config_theme_registry_alter(&$theme_registry) {
       $theme_registry['cis_lmsless_bar']['type'] = "module";
       $theme_registry['cis_lmsless_bar']['template'] = "cis-lmsless-bar";
   }
-  //dpm($theme_registry['cis_lmsless_bar']);
+  //dpm($theme_registry);
 }
 
 /**

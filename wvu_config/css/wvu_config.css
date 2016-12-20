@@ -47,6 +47,13 @@
 	footer .container{
 		width: 100%;
 	}
+	footer .container .row{
+		margin: 0;
+	}
+	footer .container .row .col.s12{
+		left: 0;
+		right: 0;
+	}
 	footer.page-footer{
 		text-align: left !important;
 	}
@@ -57,6 +64,7 @@
 	wvu-footer {
 		float: left;
 		font-size: .8em
+		padding: 10px;
 	}
 	.wvu-contact {
 		margin-bottom: 18px
