@@ -2,33 +2,23 @@
 
 /**
  * Implements hook_user_insert().
- 
+ */
 function wvu_config_user_insert(&$edit, $account, $category) {
   cas_user_operations_create_username(array($account->uid));
-}*/
+}
 
 /**
  * Implements hook_menu().
 */
 function wvu_config_menu() {
-  /*$items['wvulogout'] = array(
+  $items['wvulogout'] = array(
     'title' => 'Thanks for coming',
     'page callback' => '_wvu_config_logout',
     'page arguments' => array(),
     'access arguments' => array('access content'),
     'type' => MENU_NORMAL_ITEM,
-  );*/
-  $items['wvuonline'] = array(
-      'title' => 'WVU Online',
-      'type' => MENU_NORMAL_ITEM,
-      'access arguments' => array('access content'),
-      'page callback' => 'drupal_goto',
-      'access callback' => TRUE,
-      'page arguments' => array('http://online.wvu.edu'),
-      'menu_name' => 'main-menu',
-      'weight' => 8
-    );
-
+  );
+  
   return $items;
 } 
 
@@ -77,12 +67,12 @@ function wvu_config_aanda_page_build(&$page) {
  */
 /**
  * Implements hook_cis_service_instance_options_alter().
-
+*/
 function wvu_config_cis_service_instance_options_alter(&$options, $course, $service) {
   // ensure this module gets hooked into future builds
   $options['en'][] = 'wvu_config';
   $options['en'][] = 'cas';
-  $staff = array('li', 'bob');
+  $staff = array('emerrill');
 
   foreach ($staff as $member) {
     $options['ucrt'][] = $member . ' --mail=' . $member . '@wvu.edu';
@@ -90,11 +80,12 @@ function wvu_config_cis_service_instance_options_alter(&$options, $course, $serv
   }
 
   // add admin member roles to site
-  $admins = array('eugene');
+  $admins = array('lizheng');
   foreach ($admins as $admin) {
+    $options['ucrt'][] = $admin . ' --mail=' . $admin . '@wvu.edu';
     $options['urol']['administrator'][] = $admin;
   }
-} */
+} 
 
 /**
  * Implements hook_cis_service_instance_job_file_alter().
