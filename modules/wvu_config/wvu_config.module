@@ -2,14 +2,26 @@
 
 /**
  * Implements hook_user_insert().
- */
+ 
 function wvu_config_user_insert(&$edit, $account, $category) {
-  cas_user_operations_create_username(array($account->uid));
-}
+  //if(isset($_SESSION) && $_SESSION['phpCAS']['attributes']['isstudent'])
+    cas_user_operations_create_username(array($account->uid));
+}*/
+
+/**
+ * Implements hook_cas_user_alter
+
+function wvu_config_cas_user_alter(&$cas_user){
+    if($cas_user['attributes']['isstudent']=='FALSE'){ //only students can log in
+       $cas_user['login'] = FALSE;
+    }
+    //dpm($cas_user['attributes']);
+    //$cas_user['name'] = 'guest'.$cas_user['attributes']['isstudent'];
+}*/
 
 /**
  * Implements hook_menu().
-*/
+
 function wvu_config_menu() {
   $items['wvulogout'] = array(
     'title' => 'Thanks for coming',
@@ -20,7 +32,7 @@ function wvu_config_menu() {
   );
   
   return $items;
-} 
+} */
 
 /**
  * Implements hook_theme_registry_alter().
@@ -36,16 +48,17 @@ function wvu_config_theme_registry_alter(&$theme_registry) {
       $theme_registry['cis_lmsless_bar']['template'] = "cis-lmsless-bar";
   }
   //dpm($theme_registry);
+
 }
 
 /**
  * Implements hook_page_build().
  */
 function wvu_config_page_build(&$page) {
-  //dpm($_SESSION['phpCAS']);
    $path = drupal_get_path('module', 'wvu_config') .'/';
    drupal_add_css('https://fast.fonts.net/cssapi/36d8cd92-7cc7-499b-b169-0eed9d670283.css',array('type'=>'exteral'));
    drupal_add_css($path . 'css/wvu_config.css'); 
+   //if(isset($_SESSION['phpCAS']['attributes'])) dpm($_SESSION['phpCAS']['attributes']);
 }
 
 /**
@@ -94,3 +107,5 @@ function wvu_config_cis_service_instance_job_file_alter(&$content, $course, $ser
   // may seem odd but double running cron can prime syncing
   $content .= 'drush dis bakery' . "\n";
 }*/
+
+?>

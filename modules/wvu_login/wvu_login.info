@@ -1,0 +1,5 @@
+name = WVU Login
+description = WVU specific modifications dealing with CAS login
+package = "WVU"
+core = "7.x"
+project = "wvu_login"
