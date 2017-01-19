@@ -18,16 +18,18 @@ function wvu_login_cas_user_alter(&$cas_user){
           $cas_user['login'] = FALSE;
       }
     }
-    else cas_user_operations_create_username($cas_user['name']);
+    elseif($user->uid) cas_user_operations_create_username(array($user->uid));
 }
 
 
 /**
  * Implements hook_page_build().
-
+ 
 function wvu_login_page_build(&$page) {
-    if(isset($_SESSION['phpCAS'])) dpm($_SESSION['phpCAS']);
-}*/ 
+    //if(isset($_SESSION['phpCAS'])) dpm($_SESSION['phpCAS']);
+    global $user;
+    dpm($user);
+}*/
 
 
 /**
