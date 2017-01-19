@@ -88,14 +88,14 @@ function wvu_config_cis_service_instance_options_alter(&$options, $course, $serv
   $staff = array('emerrill');
 
   foreach ($staff as $member) {
-    $options['ucrt'][] = $member . ' --mail=' . $member . '@wvu.edu';
+    $options['ucrt'][] = $member . ' --mail=' . $member . '@mail.wvu.edu';
     $options['urol']['staff'][] =  $member;
   }
 
   // add admin member roles to site
   $admins = array('lizheng');
   foreach ($admins as $admin) {
-    $options['ucrt'][] = $admin . ' --mail=' . $admin . '@wvu.edu';
+    $options['ucrt'][] = $admin . ' --mail=' . $admin . '@mail.wvu.edu';
     $options['urol']['administrator'][] = $admin;
   }
 } 

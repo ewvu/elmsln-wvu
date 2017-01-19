@@ -25,7 +25,7 @@ function _wvu_login_error_page($code) {
 
   switch ($code) {
     case '403':
-      $output .= 'Access denied, please <a href="cas">log into your account</a>.';
+      $output .= 'To access the site, please <a href="cas">log into your account</a> with WVU Login.';
     break;
     case '404':
       $output .= t('Sorry, page not found.');

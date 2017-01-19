@@ -12,18 +12,22 @@ function wvu_login_user_insert(&$edit, $account, $category) {
  * Implements hook_cas_user_alter
 */
 function wvu_login_cas_user_alter(&$cas_user){
-    if($cas_user['attributes']['isstudent']=='FALSE'){ //only students can log in
-       $cas_user['login'] = FALSE;
+    $user = user_load_by_name($cas_user['name']);
+    if(!$user){ // username does not exist
+      if($cas_user['attributes']['isstudent']=='FALSE'){ //user is not student - only students can log in
+          $cas_user['login'] = FALSE;
+      }
     }
+    else cas_user_operations_create_username($cas_user['name']);
 }
 
 
 /**
  * Implements hook_page_build().
- 
+*/ 
 function wvu_login_page_build(&$page) {
-    if(isset($_SESSION['phpCAS']['attributes'])) dpm($_SESSION['phpCAS']['attributes']);
-}*/
+    if(isset($_SESSION['phpCAS'])) dpm($_SESSION['phpCAS']);
+}
 
 
 /**
@@ -42,7 +46,7 @@ function wvu_login_menu() {
 }
 
 /**
- * Implements hook_menu_alter().
+ * Implements hook_menu_alter(). Point the error pages to custom messages.
 */
 function wvu_login_menu_alter(&$items) {
  
@@ -58,7 +62,7 @@ function wvu_login_menu_alter(&$items) {
     'type' => MENU_CALLBACK,
     'file' => $path.'wvu_login.errors.inc',
     );
-  
+ 
   return $items;
 } 
 
