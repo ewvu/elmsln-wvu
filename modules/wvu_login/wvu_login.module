@@ -24,10 +24,10 @@ function wvu_login_cas_user_alter(&$cas_user){
 
 /**
  * Implements hook_page_build().
-*/ 
+
 function wvu_login_page_build(&$page) {
     if(isset($_SESSION['phpCAS'])) dpm($_SESSION['phpCAS']);
-}
+}*/ 
 
 
 /**
