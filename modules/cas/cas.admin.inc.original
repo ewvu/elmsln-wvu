@@ -59,7 +59,7 @@ function cas_admin_settings() {
   $form['server']['cas_server'] = array(
     '#type' => 'textfield',
     '#title' => t('Hostname'),
-    '#default_value' => variable_get('cas_server', 'ssotest.wvu.edu'),
+    '#default_value' => variable_get('cas_server', ''),
     '#size' => 30,
     // Hostnames can be 255 characters long.
     '#maxlength' => 255,
@@ -79,7 +79,7 @@ function cas_admin_settings() {
   $form['server']['cas_uri'] = array(
     '#type' => 'textfield',
     '#title' => t('URI'),
-    '#default_value' => variable_get('cas_uri', '/cas'),
+    '#default_value' => variable_get('cas_uri', ''),
     '#size' => 30,
     '#description' => t('If CAS is not at the root of the host, include a URI (e.g., /cas).'),
   );
@@ -102,7 +102,7 @@ function cas_admin_settings() {
   $form['login']['cas_login_form'] = array(
     '#type' => 'radios',
     '#title' => t('Add CAS link to login forms'),
-    '#default_value' => variable_get('cas_login_form', CAS_MAKE_DEFAULT),
+    '#default_value' => variable_get('cas_login_form', CAS_NO_LINK),
     '#options' => array(
       CAS_NO_LINK => t('Do not add link to login forms'),
       CAS_ADD_LINK => t('Add link to login forms'),
