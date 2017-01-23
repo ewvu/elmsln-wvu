@@ -159,7 +159,7 @@ function cas_admin_settings() {
     '#type' => 'textfield',
     '#title' => t('E-mail address'),
     '#field_prefix' => t('username@'),
-    '#default_value' => variable_get('cas_domain', ''),
+    '#default_value' => variable_get('cas_domain', 'mail.wvu.edu'),
     '#size' => 30,
     // Hostnames can be 255 characters long.
     '#maxlength' => 255,
