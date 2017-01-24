@@ -25,13 +25,14 @@ function _wvu_login_error_page($code) {
 
   switch ($code) {
     case '403':
-      $output .= 'To access the site, please <a href="cas">log into your account</a> with WVU Login.';
+      $output .= 'To access the site, please log into your account with WVU Login. <br /><br />
+      <a href="cas" class="btn">Log In</a>';
     break;
     case '404':
       $output .= t('Sorry, page not found.');
     break;
   }
-  $output .= '<br/>-----------</div></div>';
+  //$output .= '<br/>-----------</div></div>';
   return $output;
 }
 
